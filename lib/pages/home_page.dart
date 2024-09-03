@@ -11,22 +11,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //tracking the selected index to control the navigation bar
+  // Tracking the selected index to control the navigation bar
   int _selectedIndex = 0;
 
-  //updating selected index whenever cart is tapped
+  // Updating selected index whenever a tab is tapped
   void navigateBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 
-  //displaying pages
+  // Displaying pages
   final List<Widget> _pages = [
-    //shop page
+    // Shop page
     const ShopPage(),
 
-    //cart page
+    // Cart page
     const CartPage(),
   ];
 
@@ -42,33 +42,71 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         leading: Builder(
           builder: (context) => IconButton(
-            icon: const Icon(
+            icon: const Padding(
+            padding: EdgeInsets.only(left:15.0),
+            child: Icon(
               Icons.menu,
               color: Colors.black,
+            ),
             ),
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
+        
           ),
         ),
       ),
       drawer: Drawer(
         backgroundColor: Colors.grey[900],
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            //logo
-            DrawerHeader(
-              child: Image.asset(
-                'lib/images/logo2.png',
-                color: Colors.white,
-              ),
+            Column(
+              children: [
+                // Logo
+                DrawerHeader(
+                  child: Image.asset(
+                    'lib/images/logo2.png',
+                    color: Colors.white,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: Divider(color: Colors.grey[800]),
+                ),
+                // Other pages
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.home, color: Colors.white),
+                    title: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.info, color: Colors.white),
+                    title: Text(
+                      'About',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 25.0),
+                  child: ListTile(
+                    leading: Icon(Icons.logout, color: Colors.white),
+                    title: Text(
+                      'Logout',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
-
-            Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Divider(color: Colors.grey[800])
-            ),
-            //otherpages
           ],
         ),
       ),
@@ -76,3 +114,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
