@@ -4,7 +4,7 @@ class Shoe {
   final String imagePath;
   final String description;
 
-  Shoe({
+ const Shoe({
     required this.name,
     required this.price,
     required this.imagePath,
