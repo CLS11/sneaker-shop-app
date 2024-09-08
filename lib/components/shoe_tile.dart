@@ -83,7 +83,7 @@ class ShoeTile extends StatelessWidget {
             ),
           ),
 
-          //button to add the cart
+          
         ],
       ),
     );
